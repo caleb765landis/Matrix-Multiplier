@@ -17,24 +17,23 @@ int main(int argc, char *argv[])
     int nra, nca, nrb, ncb;
     double **xa, **xb, **product;
 
-    xa = read2d("matrix/a.mat", nra, nca); // read a 2d matrix, dimensions are returned as nr and nc
+    // read 2d matrices a and b
+    // dimensions are returned as nrx and ncx where x is matrix name
+    xa = read2d("matrix/a.mat", nra, nca); 
     xb = read2d("matrix/b.mat", nrb, ncb);
-    product = allocate2d(nra,ncb);
-    //xb = allocate2d(nr, nc);      // allocate dynamic memory for nr*nc matrix
 
-
-    // multiply the two matrices
-    MatrixMultiplier mm(xa, xb);
-    mm.multiply(product);
+    // multiply the two matrices and store result in product
+    MatrixMultiplier mm(xa, xb, nra, nca, nrb, ncb);
+    product = mm.getProduct();
     
-    // print the matrices to screen
+    // print the matrices to console
     print2d("\nxa", xa, nra, nca); 
     print2d("\nxb", xb, nrb, ncb);
-    print2d("\product", product, nra, ncb);
+    print2d("\nproduct", product, nra, ncb);
     
     // deallocate the dynamic memory
     free2d(xa); 
     free2d(xb);
-    free2d(product);
+
     return 0;
 } // end main
