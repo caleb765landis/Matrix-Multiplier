@@ -20,11 +20,8 @@ MatrixMultiplier::MatrixMultiplier(double** xa, double** xb)
 MatrixMultiplier::~MatrixMultiplier(void)
 {}
 
-void MatrixMultiplier::multiply(void)
+void MatrixMultiplier::multiply(double **product)
 {
-    // (m x q)
-    double product[3][3];
-
     // length and width of each collumn
     const int m = 3;
     const int n = 3;
@@ -36,21 +33,18 @@ void MatrixMultiplier::multiply(void)
     // for i in range 0 to m - 1
     for (int i = 0; i < m; ++i)
     {
-        std::cout << "okay j" << std::endl;
         // for j in range 0 to q – 1
         for (int j = 0; j < q; ++j)
         {
-            std::cout << "okay j" << std::endl;
             // for k in range 0 to p - 1 or (n - 1) since n and p are the same
             for (int k = 0; k < p; ++k)
             {
-                std::cout << "okay k" << std::endl;
                 product[i][j] += xa_[i][k] * xb_[k][j];
             }
         }
     }
 
-
+    /*
     std::cout << "Matrix a:" << std::endl;
     for (int i = 0; i < m; ++i)
     {
@@ -58,7 +52,7 @@ void MatrixMultiplier::multiply(void)
         {
             std::cout << xa_[i][j] << " ";
         }
-        std::cout << std::endl;
+        std::cout << std::endl << std::endl;
     }
 
     std::cout << "Matrix b:" << std::endl;
@@ -68,7 +62,7 @@ void MatrixMultiplier::multiply(void)
         {
             std::cout << xb_[i][j] << " ";
         }
-        std::cout << std::endl;
+        std::cout << std::endl << std::endl;;
     }
 
     std::cout << "Product of the two matrices is:" << std::endl;
@@ -78,8 +72,9 @@ void MatrixMultiplier::multiply(void)
         {
             std::cout << product[i][j] << " ";
         }
-        std::cout << std::endl;
+        std::cout << std::endl << std::endl;;
     }
+    */
 
     //return product;
 }

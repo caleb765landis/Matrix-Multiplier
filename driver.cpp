@@ -14,21 +14,27 @@ Modified by:
 int main(int argc, char *argv[])
 {
 
-    int nr, nc;
-    double **xa, **xb;
+    int nra, nca, nrb, ncb;
+    double **xa, **xb, **product;
 
-    xa = read2d("a.mat", nr, nc); // read a 2d matrix, dimensions are returned as nr and nc
-    xb = allocate2d(nr, nc);      // allocate dynamic memory for nr*nc matrix
-
-    for (int i = 0; i < nr; i++)
-        for (int j = 0; j < nc; j++)
-            xb[i][j] = xa[i][j]; // copy each element
+    xa = read2d("matrix/a.mat", nra, nca); // read a 2d matrix, dimensions are returned as nr and nc
+    xb = read2d("matrix/b.mat", nrb, ncb);
+    product = allocate2d(nra,ncb);
+    //xb = allocate2d(nr, nc);      // allocate dynamic memory for nr*nc matrix
 
 
+    // multiply the two matrices
     MatrixMultiplier mm(xa, xb);
-    mm.multiply();
-
-    free2d(xa); // deallocate the dynamic memory
+    mm.multiply(product);
+    
+    // print the matrices to screen
+    print2d("\nxa", xa, nra, nca); 
+    print2d("\nxb", xb, nrb, ncb);
+    print2d("\product", product, nra, ncb);
+    
+    // deallocate the dynamic memory
+    free2d(xa); 
     free2d(xb);
+    free2d(product);
     return 0;
 } // end main

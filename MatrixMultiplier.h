@@ -32,9 +32,10 @@ public:
     /**
      * @brief Multiply xa_ and xb_ matrices
      * 
-     * @return double**, product of matrices
+     * @param double** product is a pointer referencing the matrix allocated for the product of the two matrices
+     * 
      */
-    void multiply(void);
+    void multiply(double** product);
 
 private:
     double **xa_, **xb_;
