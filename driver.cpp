@@ -8,59 +8,27 @@ Modified by:
 */
 
 #include <iostream>
+#include "matrix/matrix.h"
+#include "MatrixMultiplier.h"
 
 int main(int argc, char *argv[])
 {
 
-    // (m x n)
-    double xa[3][3] = 
-    {
-        {2, 4, 1},
-        {2, 3, 9},
-        {3, 1, 8}
-    };
+    int nr, nc;
+    double **xa, **xb;
 
-    // (p x q)
-    double xb[3][3] =
-    {
-        {1, 2, 3},
-        {3, 6, 1},
-        {2, 4, 7}
-    };
+    xa = read2d("a.mat", nr, nc); // read a 2d matrix, dimensions are returned as nr and nc
+    xb = allocate2d(nr, nc);      // allocate dynamic memory for nr*nc matrix
 
-    // (m x q)
-    double product[3][3];
+    for (int i = 0; i < nr; i++)
+        for (int j = 0; j < nc; j++)
+            xb[i][j] = xa[i][j]; // copy each element
 
-    // length and width of each collumn
-    const int m=3;
-    const int n=3;
-    const int p=3;
-    const int q=3;
 
-    // if n is not same as p, then exit
+    MatrixMultiplier mm(xa, xb);
+    mm.multiply();
 
-    // for i in range 0 to m - 1
-    for (int i = 0; i < m; ++i)
-    {
-        // for j in range 0 to q – 1
-        for (int j = 0; j < q; ++j)
-        {
-            // for k in range 0 to p - 1
-            for (int k = 0; k < p; ++k)
-            {
-                product[i][j] += xa[i][k] * xb[k][j];
-            }
-        }
-    }
-
-    std::cout << "Product of the two matrices is:" << std::endl;
-    for (int i = 0; i < m; ++i)
-    {
-        for (int j = 0; j < q; ++j)
-        {   
-            std::cout << product[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
-
+    free2d(xa); // deallocate the dynamic memory
+    free2d(xb);
+    return 0;
 } // end main
