@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 {
 
     int nra, nca, nrb, ncb;
-    double **xa, **xb, **product;
+    double **xa, **xb, **product, **xc, **xd;
 
     // read 2d matrices a and b
     // dimensions are returned as nrx and ncx where x is matrix name
@@ -34,6 +34,23 @@ int main(int argc, char *argv[])
     // deallocate the dynamic memory
     free2d(xa); 
     free2d(xb);
+
+    // read 2d matrices c and d
+    // dimensions are returned as nrx and ncx where x is matrix name
+    xc = read2d("matrix/c.mat", nra, nca);
+    xd = read2d("matrix/d.mat", nrb, ncb);
+
+    // MatrixMultiplier mm2(xc, xd, nra, nca, nrb, ncb);
+    mm.setMatrices(xc, xd, nra, nca, nrb, ncb);
+    product = mm.getProduct();
+
+    // print the new matrices to console
+    print2d("\nxc", xc, nra, nca);
+    print2d("\nxd", xd, nrb, ncb);
+    print2d("\nproduct", product, nra, ncb);
+
+    free2d(xc);
+    free2d(xd);
 
     return 0;
 } // end main

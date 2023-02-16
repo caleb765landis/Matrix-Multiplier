@@ -52,6 +52,21 @@ public:
      */
     double** getProduct(void);
 
+    /**
+     * @brief
+     * Construct a new Matrix Multiplier object.
+     * Takes two matrices of size (mxn) and (pxq) respectively.
+     * Automatically multiplies two matrices together and stores their result in product_.
+     *
+     * @param xa double pointer to first matrix
+     * @param xb double pointer to second matrix
+     * @param m length of matrix a's rows
+     * @param n length of matrix a's columns
+     * @param p length of matrix b's rows
+     * @param q length of matrix b's columns
+     */
+    void setMatrices(double** xa, double** xb, int m, int n, int p, int q);
+
 private:
     double **xa_, **xb_, ** product_;
     int m_, n_, p_, q_;

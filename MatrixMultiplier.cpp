@@ -52,3 +52,21 @@ double** MatrixMultiplier::getProduct(void)
 {
     return product_;
 }
+
+void MatrixMultiplier::setMatrices(double **xa, double **xb, int m, int n, int p, int q)
+{
+    // reset properties
+    xa_ = xa;
+    xb_ = xb;
+    m_ = m;
+    n_ = n;
+    p_ = p;
+    q_ = q;
+
+    // reallocate space for product
+    free2d(product_);
+    product_ = allocate2d(m_, q_);
+
+    // multiply new matrices together
+    multiply();
+}
