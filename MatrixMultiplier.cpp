@@ -4,7 +4,7 @@ MatrixMultiplier.cpp
 Created by: Caleb Landis
 Created on: 2/16/23
 Modified by:
-    Nobody
+    Logan Kurker on 2/16/23
 */
 
 #include "MatrixMultiplier.h"
@@ -32,6 +32,9 @@ void MatrixMultiplier::multiply()
 {
     // if n is not same as p, throw exception
     // haven't implemented yet
+    if(p_ != n_){
+      //do something
+    }//end if statement 
 
     // for i in range 0 to m - 1
     for (int i = 0; i < m_; ++i)
@@ -69,4 +72,13 @@ void MatrixMultiplier::setMatrices(double **xa, double **xb, int m, int n, int p
 
     // multiply new matrices together
     multiply();
+}
+
+int MatrixMultiplier::getElements(void)
+{
+
+  // we can easily return the number of values for the new matrix if we multiply the number of rows from the first matrix with the number of columns from the second
+  int numValues = m_ * q_;
+  return numValues; 
+
 }

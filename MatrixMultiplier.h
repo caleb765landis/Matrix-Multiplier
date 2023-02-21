@@ -4,7 +4,7 @@ MatrixMultiplier.h
 Created by: Caleb Landis
 Created on: 2/16/23
 Modified by:
-    Nobody
+    Logan Kurker on 2/21/23
 */
 
 #ifndef _MATRIX_MULTIPLIER_H_
@@ -67,6 +67,12 @@ public:
      */
     void setMatrices(double** xa, double** xb, int m, int n, int p, int q);
 
+    /**
+      * @brief
+      * Multiply the rows of xa with the columns of xb.
+      * Return the value, which is equivalent to the number of elements from the new array.
+      */
+     int getElements(void); 
 private:
     double **xa_, **xb_, ** product_;
     int m_, n_, p_, q_;

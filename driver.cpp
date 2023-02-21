@@ -26,7 +26,11 @@ int main(int argc, char *argv[])
     MatrixMultiplier mm(xa, xb, nra, nca, nrb, ncb);
     product = mm.getProduct();
     
-    // print the matrices to console
+    // checking to see if the number of elements in the array is correct
+    int numElements = mm.getElements();
+    std::cout << numElements << std::endl;
+    
+    //print the matrices to console
     print2d("\nxa", xa, nra, nca); 
     print2d("\nxb", xb, nrb, ncb);
     print2d("\nproduct", product, nra, ncb);
@@ -51,6 +55,6 @@ int main(int argc, char *argv[])
 
     free2d(xc);
     free2d(xd);
-
+    
     return 0;
 } // end main
