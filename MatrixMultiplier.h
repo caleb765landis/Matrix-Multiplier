@@ -66,7 +66,7 @@ public:
      * @param p length of matrix b's rows
      * @param q length of matrix b's columns
      */
-    void setMatrices(double** xa, double** xb, int m, int n, int p, int q);
+    void setMatrices(double** xa, double** xb, int m, int n, int p, int q, int start, int end);
 
     /**
       * @brief
@@ -94,6 +94,8 @@ public:
     * This method will be called once the new matrix C has been created, and will divide the sum member variable with the elements member variable
     */
   double getAverage(void);
+
+  void multiply(int start, int end);
    
 private:
     double **xa_, **xb_, ** product_;
@@ -108,7 +110,8 @@ private:
      * @param double** product is a pointer referencing the matrix allocated for the product of the two matrices
      *
      */
-    void multiply(void);
+    //temporarily making public to test things
+    //void multiply(int start, int end);
 };
 
 #endif // defined MatrixMultiplier
