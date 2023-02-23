@@ -5,6 +5,7 @@ Created by: Caleb Landis
 Created on: 2/16/23
 Modified by:
     Logan Kurker on 2/21/23
+    Logan Kurker on 2/23/23
 */
 
 #ifndef _MATRIX_MULTIPLIER_H_
@@ -73,9 +74,33 @@ public:
       * Return the value, which is equivalent to the number of elements from the new array.
       */
      int getElements(void); 
+
+   /**
+     * @brief
+     * A method that adds together elements from the matrix into the sum member variable.
+     *
+     * @param element is a double value that will be added to the sum value as the new matrix is being created
+     */
+   void addElements(double element);
+
+   /**
+     * @brief
+     * Getter for the sum
+     */
+   double getSum(void);
+
+  /**
+    * @brief
+    * This method will be called once the new matrix C has been created, and will divide the sum member variable with the elements member variable
+    */
+  double getAverage(void);
+   
 private:
     double **xa_, **xb_, ** product_;
     int m_, n_, p_, q_;
+    int elements;
+    double sum;
+    double average;
 
     /**
      * @brief Multiply xa_ and xb_ matrices

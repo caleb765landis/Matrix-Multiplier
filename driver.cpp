@@ -4,7 +4,7 @@ driver.cpp
 Created by: Caleb Landis
 Created on: 2/16/23
 Modified by:
-    Nobody
+    Logan Kurker on 2/23/23
 */
 
 #include <iostream>
@@ -47,7 +47,9 @@ int main(int argc, char *argv[])
     // MatrixMultiplier mm2(xc, xd, nra, nca, nrb, ncb);
     mm.setMatrices(xc, xd, nra, nca, nrb, ncb);
     product = mm.getProduct();
-
+    //double sum = mm.getSum();
+    //std::cout << sum << std::endl;
+     
     // print the new matrices to console
     print2d("\nxc", xc, nra, nca);
     print2d("\nxd", xd, nrb, ncb);
