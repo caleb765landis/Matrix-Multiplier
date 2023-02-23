@@ -4,7 +4,8 @@ MatrixMultiplier.cpp
 Created by: Caleb Landis
 Created on: 2/16/23
 Modified by:
-    Logan Kurker on 2/16/23
+    Logan Kurker on 2/21/23
+    Logan Kurker on 2/23/23
 */
 
 #include "MatrixMultiplier.h"
@@ -46,6 +47,7 @@ void MatrixMultiplier::multiply()
             for (int k = 0; k < p_; ++k)
             {
                 product_[i][j] += xa_[i][k] * xb_[k][j];
+                addElements(product_[i][j]);
             } // end for k
         } // end for j
     } // end for i
@@ -78,7 +80,38 @@ int MatrixMultiplier::getElements(void)
 {
 
   // we can easily return the number of values for the new matrix if we multiply the number of rows from the first matrix with the number of columns from the second
-  int numValues = m_ * q_;
-  return numValues; 
+  int elements = m_ * q_;
+  return elements; 
+
+}
+
+//
+// addElements
+//
+void MatrixMultiplier::addElements(double element)
+{
+
+  sum += element;
+
+}
+
+//
+// getSum
+//
+double MatrixMultiplier::getSum(void)
+{
+
+  return sum;
+
+}
+
+//
+// setAverage
+//
+double MatrixMultiplier::getAverage(void)
+{
+
+    average = this->getSum() / elements;
+    return average;
 
 }
