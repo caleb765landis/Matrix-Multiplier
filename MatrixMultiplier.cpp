@@ -21,7 +21,7 @@ MatrixMultiplier::MatrixMultiplier(double **xa, double **xb, int m, int n, int p
     product_ = allocate2d(m_, q_);
 
     // multiply two matrices and store their result in product
-    multiply();
+    multiply(0, 0);
 }
 
 MatrixMultiplier::~MatrixMultiplier(void)
@@ -29,7 +29,7 @@ MatrixMultiplier::~MatrixMultiplier(void)
     free2d(product_);
 }
 
-void MatrixMultiplier::multiply()
+void MatrixMultiplier::multiply(int start, int end)
 {
     // if n is not same as p, throw exception
     // haven't implemented yet
@@ -47,8 +47,8 @@ void MatrixMultiplier::multiply()
             for (int k = 0; k < p_; ++k)
             {
                 product_[i][j] += xa_[i][k] * xb_[k][j];
-                addElements(product_[i][j]);
             } // end for k
+          addElements(product_[i][j]);
         } // end for j
     } // end for i
 } // end multiply
@@ -58,7 +58,7 @@ double** MatrixMultiplier::getProduct(void)
     return product_;
 }
 
-void MatrixMultiplier::setMatrices(double **xa, double **xb, int m, int n, int p, int q)
+void MatrixMultiplier::setMatrices(double **xa, double **xb, int m, int n, int p, int q, int start, int end)
 {
     // reset properties
     xa_ = xa;
@@ -73,7 +73,7 @@ void MatrixMultiplier::setMatrices(double **xa, double **xb, int m, int n, int p
     product_ = allocate2d(m_, q_);
 
     // multiply new matrices together
-    multiply();
+    multiply(start, end);
 }
 
 int MatrixMultiplier::getElements(void)
@@ -106,7 +106,7 @@ double MatrixMultiplier::getSum(void)
 }
 
 //
-// setAverage
+// getAverage
 //
 double MatrixMultiplier::getAverage(void)
 {
